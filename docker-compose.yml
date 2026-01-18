@@ -1,0 +1,13 @@
+services:
+  game:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - DISPLAY=${DISPLAY:-host.docker.internal:0.0}
+    # For WSLg or X11 forwarding on Windows
+    network_mode: "host"
+    # Alternatively, for Docker Desktop on Windows:
+    # ports:
+    #   - "8080:8080"
+    command: python main.py
